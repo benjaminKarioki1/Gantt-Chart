@@ -2,8 +2,6 @@
 
 void InputFunction(TaskInfo tasks[], int NumberOfTasks){
     int NumberOfTasks;
-    printf("How many Tasks would you like to add?\n");
-    scanf("%d", &NumberOfTasks);
     for (int i = 0; i < NumberOfTasks; i++) {
         printf("Enter the Task Name: ");
         scanf("%s", tasks[i].TaskName);
