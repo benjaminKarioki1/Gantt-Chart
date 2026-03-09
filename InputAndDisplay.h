@@ -48,6 +48,7 @@ typedef struct {
 
 void inputFunction(TaskInfo tasks[], int NumberOfTasks); 
 
+void addTask(TaskInfo tasks[], int *NumberOfTasks);   
 
 void DisplayTasks(TaskInfo tasks[], int NumberOfTasks);
 

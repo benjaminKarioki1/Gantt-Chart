@@ -1,4 +1,3 @@
-
 #include "InputAndDisplay.h"
 
 
@@ -45,6 +44,40 @@ void inputFunction(TaskInfo tasks[], int NumberOfTasks){
 
 }
 
+
+void addTask(TaskInfo tasks[], int *NumberOfTasks) {
+    if (*NumberOfTasks >= Max_Tasks) {
+        printf("Cannot add more tasks – maximum of %d reached\n", Max_Tasks);
+        return;
+    }
+
+    int i = *NumberOfTasks;           /* index of the new entry */
+
+    printf("Please enter the task name\n");
+    scanf("%s", tasks[i].TaskName);
+
+    printf("Start month (1-12):\n");
+    {
+        int month;
+        scanf("%d", &month);
+        tasks[i].StartMonth = (enum Month)month;
+    }
+    printf("End month (1-12):\n");
+    {
+        int month;
+        scanf("%d", &month);
+        tasks[i].EndMonth = (enum Month)month;
+    }
+
+    printf("Enter how many dependencies this task has\n");
+    scanf("%d", &tasks[i].dependencies);
+    for (int j = 0; j < tasks[i].dependencies; j++) {
+        printf("Enter dependent task\n");
+        scanf("%s", tasks[i].DependentTasks[j]);
+    }
+
+    (*NumberOfTasks)++;              /* bump caller’s count */
+}
 
 void clearChart() {
     // Preprocessor directive to check if compiling for Windows
