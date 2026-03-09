@@ -1,36 +1,9 @@
 
-#include <stdio.h>
-#include <string.h>
-#include "InputAndDisplay.h"
-#include "testExample.h"
 
-void printAsciiArt() {
-    printf("        .\n");
-    printf("      ,i \\\n");
-    printf("    ,' 8b \\\n");
-    printf("  ,;o  `8b \\\n");
-    printf(" ;  Y8. d8  \\\n");
-    printf("-+._ 8: d8. i:\n");
-    printf("    `:8 `8i `8\n");
-    printf("      `._Y8  8:  ___\n");
-    printf("         `'---Yjdp  \"8m._\n");
-    printf("              ,\"' _,o9   `m._\n");
-    printf("              | o8P\"   _.8d8P`-._\n");
-    printf("              :8'   _oodP\"   ,dP'`-._\n");
-    printf("               `: dd8P'   ,odP'  do8'`.\n");
-    printf("                 `-'   ,o8P'  ,o8P' ,8P`.\n");
-    printf("                   `._dP'   ddP'  ,8P' ,..\n");
-    printf("                      \"`._ PP'  ,8P' _d8'L..__\n");
-    printf("                          `\"-._88'  .PP,'7 ,8.`-.._\n");
-    printf("                               ``'\"--\"'  | d8' :8i `i.\n");
-    printf("                                         l d8  d8  dP/\n");
-    printf("                                          \\`' J8' `P'\n");
-    printf("                                           \\ ,8F  87\n");
-    printf("                                           `.88  ,'\n");
-    printf("                                            `.,-' mh\n\n");
-}
-
-void InputFunction(TaskInfo tasks[], int NumberOfTasks);
+#include <stdio.h>         
+#include <string.h>         
+#include "InputAndDisplay.h" 
+#include "testExample.h" 
 
 int findTaskByName(TaskInfo tasks[], int n, char* name) {
     // Loop through each task in the array
@@ -42,7 +15,7 @@ int findTaskByName(TaskInfo tasks[], int n, char* name) {
             return i;
         }
     }
-    // If loop completes without finding a match, return -1 to indicate not found
+    // If loop completes without finding a match, return -1 to indicate "not found"
     return -1;
 }
 
@@ -94,6 +67,7 @@ void editTask(TaskInfo tasks[], int NumberOfTasks) {
         scanf("%s", tasks[index].DependentTasks[i]);
     }
 }
+
 
 void printDependenciesRecursive(TaskInfo tasks[], int n, int index, int visited[], int isFirst) {
     // Check if this task has already been visited/processed
@@ -160,7 +134,6 @@ int hasCycle(TaskInfo tasks[], int n, int index, int visited[], int recStack[]) 
 
 }
 
-
 void testDependencies(TaskInfo tasks[], int NumberOfTasks) {
     // Declare a character array to store the task name user wants to test
     char name[65];
@@ -177,7 +150,7 @@ void testDependencies(TaskInfo tasks[], int NumberOfTasks) {
         // Exit function early without performing the test
         return;
     }
-
+    
     // Initialize the visited array to track which tasks have been processed
     // memset() fills all bytes with 0, meaning all tasks are initially unvisited
     int visited[Max_Tasks] = {0};
@@ -195,7 +168,7 @@ void testDependencies(TaskInfo tasks[], int NumberOfTasks) {
         // Display success message if no circular dependencies found
         printf("No circular dependencies found for this task.\n");
     }
-
+    
     // Initialize a fresh visited array for the recursive dependency printing
     // This is separate from the cycle detection visited array
     int vis[Max_Tasks] = {0};
@@ -208,7 +181,7 @@ void testDependencies(TaskInfo tasks[], int NumberOfTasks) {
 
 
 int main() {
-
+    
     // Declare an array to hold up to Max_Tasks (10) TaskInfo structures
     TaskInfo tasks[Max_Tasks];
     // Variable to store the number of tasks user wants to create or will use
@@ -262,6 +235,10 @@ int main() {
             // After editing, redisplay the updated Gantt chart
             DisplayTasks(tasks, NumberOfTasks);
         }
+         else if (strcmp(option, "add") == 0) {          
+            addTask(tasks, &NumberOfTasks);
+            DisplayTasks(tasks, NumberOfTasks);
+         }
         // Check if user selected "test" option
         else if (strcmp(option, "test") == 0) {
             // Call testDependencies function to check for circular dependencies
@@ -278,8 +255,7 @@ int main() {
             printf("Invalid option\n");
         }
     }
-printf("Thank you for using out chart!");
-void printAsciiArt();
+
 
     return 0;
 }
