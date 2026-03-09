@@ -4,6 +4,31 @@
 #include "InputAndDisplay.h"
 #include "testExample.h"
 
+void printAsciiArt() {
+    printf("        .\n");
+    printf("      ,i \\\n");
+    printf("    ,' 8b \\\n");
+    printf("  ,;o  `8b \\\n");
+    printf(" ;  Y8. d8  \\\n");
+    printf("-+._ 8: d8. i:\n");
+    printf("    `:8 `8i `8\n");
+    printf("      `._Y8  8:  ___\n");
+    printf("         `'---Yjdp  \"8m._\n");
+    printf("              ,\"' _,o9   `m._\n");
+    printf("              | o8P\"   _.8d8P`-._\n");
+    printf("              :8'   _oodP\"   ,dP'`-._\n");
+    printf("               `: dd8P'   ,odP'  do8'`.\n");
+    printf("                 `-'   ,o8P'  ,o8P' ,8P`.\n");
+    printf("                   `._dP'   ddP'  ,8P' ,..\n");
+    printf("                      \"`._ PP'  ,8P' _d8'L..__\n");
+    printf("                          `\"-._88'  .PP,'7 ,8.`-.._\n");
+    printf("                               ``'\"--\"'  | d8' :8i `i.\n");
+    printf("                                         l d8  d8  dP/\n");
+    printf("                                          \\`' J8' `P'\n");
+    printf("                                           \\ ,8F  87\n");
+    printf("                                           `.88  ,'\n");
+    printf("                                            `.,-' mh\n\n");
+}
 
 void InputFunction(TaskInfo tasks[], int NumberOfTasks);
 
@@ -253,7 +278,8 @@ int main() {
             printf("Invalid option\n");
         }
     }
-
+printf("Thank you for using out chart!");
+void printAsciiArt();
 
     return 0;
 }
