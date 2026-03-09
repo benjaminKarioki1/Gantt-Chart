@@ -18,7 +18,7 @@ Tasks are stored in an array of structs, allowing the program to manage up to te
 **Editing and Changing Tasks**
 
 We implemented an edit feature that allows the user to modify an existing task by typing edit.
-The program asks for the exact task name and searches the task array using a helper function that compares names using strcmp(). Once the task is found, the user is prompted to enter the updated task name, start month, end month, and dependencies. These values overwrite the existing values stored in the struct, and the Gantt chart is displayed again with the updated information.
+The program asks for the exact task name and searches the task array using a helper function that compares names using strcmp(). Once the task is found, the user is prompted to enter the updated task name, start month, end month, and dependencies. These values overwrite the existing values stored in the struct, and the Gantt chart is displayed again with the updated information. There is also the function for adding a new task to the existing chart. This works by appending the new task with the existing ones 
 
 
 **Searching for Circular Dependencies**
