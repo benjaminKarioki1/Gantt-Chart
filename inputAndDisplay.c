@@ -1,4 +1,7 @@
+
 #include "InputAndDisplay.h"
+
+
 // This determines horizontal spacing for task names
 #define task_col_width 20
 // Each month gets 9 character spaces for alignment (to fit "September")
@@ -6,22 +9,52 @@
 
 #define deps_col_width 15
 
-void InputFunction(TaskInfo tasks[], int NumberOfTasks){
-    int NumberOfTasks;
+
+void inputFunction(TaskInfo tasks[], int NumberOfTasks){
+    
     for (int i = 0; i < NumberOfTasks; i++) {
-        printf("Enter the Task Name: ");
+       
+        printf("Please enter the task name\n");
+        
         scanf("%s", tasks[i].TaskName);
-        printf("Enter the Start Month (1-12): ");
-        scanf("%d", &tasks[i].StartMonth);
-        printf("Enter the End Month (1-12): ");
-        scanf("%d", &tasks[i].EndMonth);
-        printf("Enter the Number of Dependencies: ");
+        
+        printf("Start month (1-12):\n");
+        {
+            int month;
+            scanf("%d", &month);
+            tasks[i].StartMonth = (enum Month)month;
+        }
+        printf("End month (1-12):\n");
+        {
+            int month;
+            scanf("%d", &month);
+            tasks[i].EndMonth = (enum Month)month;
+        }
+        
+        printf("Enter how many dependencies this task has\n");
+       
         scanf("%d", &tasks[i].dependencies);
-        if (tasks[i].dependencies > 0) {
-            printf("Enter the Dependent Task: ");
-            scanf("%s", tasks[i].DependentTask);
-        }   
+        // Loop to read each dependent task name based on the dependency count
+        for (int j = 0; j < tasks[i].dependencies; j++) {
+           
+            printf("Enter dependent task\n");
+            
+            scanf("%s", tasks[i].DependentTasks[j]);
+        }
     }
+
+}
+
+
+void clearChart() {
+    // Preprocessor directive to check if compiling for Windows
+#ifdef _WIN32
+    // Windows system command to clear the screen (cls = clear screen)
+    system("cls");
+#else
+    // Unix/Linux/macOS system command to clear the screen
+    system("clear");
+#endif
 }
 
 // Helper function to map Month enum to string name
@@ -45,7 +78,7 @@ static const char *getMonthName(enum Month m) {
 }
 
 void DisplayTasks(TaskInfo tasks[], int NumberOfTasks) {
-
+    
 
     // Calculate the total width of the chart in characters for consistent formatting
     // Formula: task_col_width + (12 months × (1 pipe + month_col_width)) + 1 pipe + deps_col_width
@@ -53,10 +86,10 @@ void DisplayTasks(TaskInfo tasks[], int NumberOfTasks) {
     int real_width = task_col_width
                    + 12 * (1 + month_col_width)
                    + 1 + deps_col_width;
-
+    
     // Clear the screen before displaying the new chart
     clearChart();
-
+    
     // ========== PRINT TOP BORDER ==========
     // Loop to print the top dashed line (one dash per character width)
     for (int i = 0; i < real_width; i++) {
@@ -78,7 +111,7 @@ void DisplayTasks(TaskInfo tasks[], int NumberOfTasks) {
     }
     // Print final column header for dependencies with fixed width
     printf("|%-*s\n", deps_col_width, "Dependencies");
-
+    
     // print separator line
     // Print dashes below the header row
     for (int i = 0; i < real_width; i++) {
@@ -125,7 +158,7 @@ void DisplayTasks(TaskInfo tasks[], int NumberOfTasks) {
 
         // Print newline to move to next row
         putchar('\n');
-
+        
         // print row separator
         // Print dashes below each task row for visual separation
         for (int j = 0; j < real_width; j++) {
