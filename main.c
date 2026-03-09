@@ -17,7 +17,7 @@ int findTaskByName(TaskInfo tasks[], int n, char* name) {
             return i;
         }
     }
-    // If loop completes without finding a match, return -1 to indicate "not found"
+    // If loop completes without finding a match, return -1 to indicate not found
     return -1;
 }
 
