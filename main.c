@@ -223,7 +223,7 @@ int main() {
     // Enter the main program loop for interactive menu
     while (1) {
         // Display menu options to user
-        printf("If you wish to edit the Gantt please type 'edit' / If you wish to run a test, type 'test' or to exit, type 'quit' and then press enter to execute your option.\n");
+        printf("If you wish to add a new task type 'add' /If you wish to edit the Gantt type 'edit' /If you wish to run a test, type 'test' or to exit, type 'quit' and then press enter to execute your option.\n");
         // Declare character array to store user's menu selection
         char option[10];
         // Read the user's option from input
